@@ -14,10 +14,9 @@ int main(void) {
     servoInit();
     DCMotorInit();
     initUART();
+    setDCMotorSpeed(80,80);
 
     while(1){
-    	setDCMotorSpeed(80,80);
-    	delay(100000);
     	//setDCMotorSpeed(-50,-50);
     	//delay(100000);
     	//setDCMotorSpeed(0,0,0,0);
