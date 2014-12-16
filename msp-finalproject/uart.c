@@ -43,7 +43,7 @@ __interrupt void USCI0RX_ISR(void)
 
 	while(!(IFG2 & UCA0TXIFG));
 	uint8_t cmd = UCA0RXBUF;
-	UCA0TXBUF = cmd;
+	//UCA0TXBUF = cmd;
 //	while(!(IFG2 & UCA0TXIFG));
 //	uint8_t len = UCA0RXBUF;
 //	UCA0TXBUF = len;
@@ -51,7 +51,7 @@ __interrupt void USCI0RX_ISR(void)
 	while(!(IFG2 & UCA0TXIFG));
 	int16_t data = UCA0RXBUF;
 	int8_t data_signed = (int8_t) data-128;
-	UCA0TXBUF = data;
+	//UCA0TXBUF = data;
 
 	// 0x44 is "D" - setting direction
 	if(cmd == 0x44) {
@@ -65,8 +65,8 @@ __interrupt void USCI0RX_ISR(void)
 	else {
 		setDCMotorSpeed(80, 80);
 		while(!(IFG2 & UCA0TXIFG));
-		UCA0TXBUF = 0xff;
+		UCA0TXBUF = 0x50;
 		while(!(IFG2 & UCA0TXIFG));
-		UCA0TXBUF = 0xff;
+		UCA0TXBUF = 0x60;
 	}
 }
