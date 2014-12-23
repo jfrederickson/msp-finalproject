@@ -3,7 +3,6 @@
  *
  *  Created on: Sep 24, 2014
  *      Author: James Ritchie
- *      Author: Jonathan Frederickson
  */
 
 #ifndef SERVO_H_
@@ -16,7 +15,6 @@
 
 void servoInit(void);
 void servoSetDuty(uint16_t regVal);
-void servoSetDirection(int8_t dir);
 
 
 #endif /* SERVO_H_ */
