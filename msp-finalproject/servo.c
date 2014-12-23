@@ -50,3 +50,20 @@ void servoSetDuty(uint16_t regVal){
 		TA0CCR1 = regVal;
 	}
 }
+
+/*
+ * Wrapper function for servoSetDuty
+ * 0 is center point, 127 is maximum, -128 is minimum
+ */
+void servoSetDirection(int8_t dir) {
+	if(dir > 0) {
+		servoSetDuty((DUTY_UPPER_BOUND/127) * dir);
+	}
+	else if(dir < 0) {
+		servoSetDuty(-(DUTY_LOWER_BOUND/127) * dir);
+	}
+	else {
+		// set to right in the middle
+		servoSetDuty(DUTY_UPPER_BOUND - ((DUTY_UPPER_BOUND-DUTY_LOWER_BOUND)/2));
+	}
+}

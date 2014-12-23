@@ -43,7 +43,6 @@ int initUART(void)
 #pragma vector=USCIAB0RX_VECTOR
 __interrupt void USCI0RX_ISR(void)
 {
-	while(!(IFG2 & UCA0TXIFG));
 	if(!rx_lock) {
 		cmd = UCA0RXBUF;
 		rx_lock = 1;
